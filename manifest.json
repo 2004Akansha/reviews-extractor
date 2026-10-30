@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "DE master Google Reviews Extractor",
+  "version": "1.3.0",
+  "description": "Floating Google Maps panel: auto-scroll, then extract reviews and image links as HTML, JSON, or CSV.",
+  "action": {
+    "default_title": "Show reviews panel on Maps",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.google.com/maps*",
+        "https://maps.google.com/*",
+        "https://*.google.co.in/maps*",
+        "https://*.google.co.uk/maps*",
+        "https://*.google.com.au/maps*",
+        "https://*.google.ca/maps*",
+        "https://*.google.de/maps*",
+        "https://*.google.fr/maps*",
+        "https://*.google.it/maps*",
+        "https://*.google.es/maps*",
+        "https://*.google.ae/maps*",
+        "https://*.google.co.nz/maps*",
+        "https://*.google.co.za/maps*",
+        "https://*.google.com.sg/maps*",
+        "https://*.google.com.pk/maps*",
+        "https://*.google.com.bd/maps*",
+        "https://*.google.com.np/maps*",
+        "https://*.google.lk/maps*",
+        "https://*.google.com.my/maps*",
+        "https://*.google.co.jp/maps*",
+        "https://*.google.com.br/maps*",
+        "https://*.google.nl/maps*",
+        "https://*.google.ie/maps*",
+        "https://*.google.com.mx/maps*",
+        "https://*.google.com.ph/maps*",
+        "https://*.google.co.th/maps*",
+        "https://*.google.com.sa/maps*",
+        "https://*.google.com.ng/maps*",
+        "https://*.google.co.ke/maps*"
+      ],
+      "js": ["extractor.js", "overlay.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["overlay.css"],
+      "matches": ["https://*/*"]
+    }
+  ]
+}
