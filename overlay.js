@@ -777,23 +777,25 @@ $("tl-save-database").addEventListener("click", async () => {
 
     setStatus("Sending business, reviews, and photos to Laravel...");
 
-    const response = await fetch(
-      "http://127.0.0.1:8000/api/import/business",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          job_id: JOB_ID,
-          source_id: SOURCE_ID,
-          business,
-          reviews: reviewData,
-          photos
-        })
-      }
-    );
+    
+const API_URL =
+  "https://pipeline.demaster.in/api/import/business";
+
+const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify({
+    job_id: JOB_ID,
+    source_id: SOURCE_ID,
+    business,
+    reviews: reviewData,
+    photos
+  })
+});
+
 
     // Read the response once, even if Laravel returns HTML or invalid JSON.
     const responseText = await response.text();
